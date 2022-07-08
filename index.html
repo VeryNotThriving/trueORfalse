@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <h1>Question Game</h1>
+        <h4 id="directions">Select any key to begin</h4>
+        <p id="score"></p>
+        <p id="question"></p>
+    </div>
+    <script>
+        var i =0;
+        var score = 0;
+        var myArray = 
+            [{q: "Is the sky blue?", a: "t"}, 
+
+            {q: "Is weezer a good band?", a: "f"}, 
+
+            {q: "9+10=21", a: "t"}, 
+
+            {q: "I can't wait for school to start", a: "f"}, 
+
+            {q: "this test might be a bit biased", a: "t"}, 
+            
+            {q: "this test might be a bit biased", a: "f"}, 
+            
+            {q: "the state of the marvel could move in any direction at this point", a: "t"}, 
+            
+            {q: "stickers are kinda lame:/", a: "f"}, 
+            
+            {q: "the new season of stranger things is pretty okay", a: "t"}, 
+            
+            {q: "Alexi had it coming", a: "f"} 
+        ]
+
+        function renderQ(){
+            if (i <= (myArray.length - 1)){
+                    document.querySelector("#question").innerHTML = myArray[i].q;
+                }
+                else {
+                    document.querySelector("#question").innerHTML = "Game Over!";
+                    document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + questions.length;
+                }
+        }
+        function updateScore(){
+            document.querySelector("#score").innerHTML = "Score: " + score;
+        }
+        
+        
+        renderQ();
+        updateScore();
+        document.onkeyup = function(event) 
+        {
+            var letter = event.key.toLowerCase();
+            if (i === myArray.length) {
+                return;
+            }
+
+            if(letter === 't' || letter === 'f'){
+                if(letter === myArray[i].a){
+                    alert("correct");
+                    score++;
+                    updateScore();
+                }
+                else{
+                    alert("incorrect ");
+                }
+                 i++;
+                 renderQ();
+
+                 
+
+
+
+
+            }
+            else{
+                alert("please enter 't' or 'f'")
+            }
+           
+        }
+    // Captures the key press, converts it to lowercase, and saves it to a variable.
+    
+    </script>    
+</body>
+</html>
